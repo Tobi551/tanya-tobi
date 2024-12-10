@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanya Tobi</title>
+</head>
+<style>
+    *,
+    html {
+        margin: 0;
+        padding: 0;
+        font-family: monospace;
+    }
+
+    body {
+        height: 100vh;
+        background-color: #201f1f;
+    }
+
+    img {
+        height: 300px;
+        width: 300px;
+        margin-top: 100px;
+        margin-bottom: 10px;
+        border-radius: 100%;
+    }
+
+    .container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        flex-direction: column;
+    }
+
+    .kirim {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    input {
+        border: 1px solid #000;
+        height: 40px;
+        padding-left: 10px;
+        border-radius: 100px 0px 0px 100px;
+        width: 250px;
+    }
+
+    button {
+        height: 42px;
+        width: 60px;
+        border: 1px solid #000;
+        background-color: #ff0000;
+        border-radius: 0px 100px 100px 0px;
+    }
+
+    .papan {
+        margin-top: 20px;
+        height: 200px;
+        width: 70%;
+        padding: 10px;
+        background-color: #f1eeee;
+        border: 5px solid #ff0000;
+        border-radius: 10px;
+        overflow: scroll;
+        scroll-snap-align: Y;
+    }
+
+    .quis {
+        margin: 5px;
+        font-size: larger;
+        font-weight: bold;
+        color: #ff0000;
+    }
+
+    .tanya{
+        width: 90%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .jawab {
+        position: absolute;
+        margin: 5px;
+        font-size: larger;
+        font-weight: bold;
+        color: #ff0000;
+        background-color: #f1eeee;
+        border: 1px solid #ff0000;
+        border-radius: 10px 10px 10px 10px;
+        margin-top: 55%;
+        margin-right: 60%;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <img src="foto.jpg" alt="">
+
+
+        <div id="jawab" class="jawab"></div>
+        <div class="tanya">
+            <p id="quis" class="quis"></p>
+        </div>
+        <form action="/submit" method="dialog">
+            <div class="kirim">
+                <input style="width: 23%;" type="text" required placeholder="Isi nama" id="you">
+                <input style="width: 55%; border-radius: 0px;" type="text" required placeholder="Isi pertanyaan!"
+                    id="pesan">
+                <button style="width: 18%;" onclick="send()" type="reset">kirim</button>
+            </div>
+
+        </form>
+
+
+
+    </div>
+</body>
+
+<script>
+
+    let x = Math.floor(Math.random() * 2) + 1;
+    let isijawab = document.getElementById("jawab");
+    let isi2 = document.createElement("p");
+    let lu = "";
+
+    function time() {
+        let y = 0;
+        let tungguin = setInterval((interval) => {
+            y += 1;
+           
+            if (y == 2) {
+                isi2.textContent = " ";
+                jawab.style.padding = "0px";
+            }
+        }, 1000)
+        setInterval((interval) => {
+            clearInterval(tungguin)
+        }, 2000)
+    }
+
+
+    // function kirim2() {
+
+    //     jawab.style.padding = "10px";
+
+    //     isi2.style.fontSize = "20px";
+    //     
+    //     console.log("nama = ", you.value)
+    //     console.log(z.length)
+    //     if (z.length === 0) {
+    //         time()
+    //         isijawab.appendChild(isi2);
+    //         isi2.textContent = " Hay manusia tanpa nama:> ";
+    //         lu = "anda";
+    //     }
+
+    //     if (z.length > 0) {
+    //         time()
+    //         isijawab.appendChild(isi2);
+    //         isi2.textContent = " Hay " + you.value + ":>";
+    //         lu = you.value;
+    //     }
+    // }
+
+
+
+    function send() {
+        let nilai = pesan.value;
+        let z = you.value;
+
+        if (z.length === 0) {
+            lu = "anda";
+        }
+
+        if (z.length > 0) {
+            lu = you.value;
+        }
+
+        x = Math.floor(Math.random() * 4) + 1;
+
+        let nama = lu;
+        quis.textContent = nama + " : " + pesan.value;
+
+        jawab.style.padding = "10px";
+
+        isi2.style.fontSize = "20px";
+
+        if (nilai.length === 0) {
+            time()
+            console.log("tes")
+            isijawab.appendChild(isi2);
+            isi2.textContent = " Pertanyaanya mana?";
+        }
+        if (nilai.length > 0) {
+            if (x == 1) {
+                time()
+                isijawab.appendChild(isi2);
+                isi2.textContent = " Ya ";
+            }
+
+            if (x == 2) {
+                time()
+                isijawab.appendChild(isi2);
+                isi2.textContent = " Gak ";
+            }
+
+            if (x == 3) {
+                time()
+                isijawab.appendChild(isi2);
+                isi2.textContent = " Entahlah ";
+            }
+
+            if (x == 4) {
+                time()
+                isijawab.appendChild(isi2);
+                isi2.textContent = " Huu.. Kepo ";
+
+            }
+        }
+
+    }
+
+
+</script>
+
+</html>
